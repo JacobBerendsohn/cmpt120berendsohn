@@ -3,25 +3,56 @@
 # Author: Jacob Berendsohn
 # Created: 2018-09-24
 
-def main():
+
+# Gets the first and last name into a list
+def getName():
+
+    name = []
+    name.append(input("Enter your first name: "))
+    name.append(input("Enter your last name: "))
+
+    return name
+        
+
+
+# Builds a marist style username
+def buildUser(fName, lName):
+
+    uname = fName + (".") + lName + ("1")
+
+    return uname
     
-    # get user's first and last names
-    first = input("Enter your first name: ")
-    last = input("Enter your last name: ")
     
-    # TODO modify this to generate a Marist-style username
-    uname = first + (".") + last + ("1")
-    
+
+# Checks password strength
+def passTest():
+
     # ask user to create a new password
     passwd = input("Create a new password: ")
-    
-    # TODO modify this to ensure the password has at least 8 characters
     
     while len(passwd) < 8:
         print("Fool of a Took! That password is feeble!")
         passwd = input("Create a new password: ")
-    
+
     print("The force is strong in this one…")
-    print("Account configured. Your new email address is",uname + "@marist.edu")
+
+    return passwd
+
+
+
+# Main function of the code
+def main():
+
+    name = getName()
+    uname = buildUser(name[0], name[1])
+    passTest()
     
+    print("Account configured. Your new email address is",uname + "@marist.edu")
+
 main()
+    
+
+
+
+
+
