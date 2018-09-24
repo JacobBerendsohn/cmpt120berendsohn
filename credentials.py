@@ -19,33 +19,37 @@ def getName():
 def buildUser(fName, lName):
 
     uname = fName + (".") + lName + ("1")
-
-    return uname
+    
+    return uname.lower()
     
     
 
-# Checks password strength
-def passTest():
+# Creates password
+def passMake():
 
     # ask user to create a new password
     passwd = input("Create a new password: ")
-    
-    while len(passwd) < 8:
-        print("Fool of a Took! That password is feeble!")
-        passwd = input("Create a new password: ")
-
-    print("The force is strong in this one…")
+    passTest(passwd)
 
     return passwd
 
 
+# Tests password strength
+def passTest(password):
+
+    if (len(password) > 8 and password.lower() != password and password.upper() != password):
+        print("The force is strong in this one…")
+    else:
+        print("Fool of a Took! That password is feeble!")
+        passMake()
+    
 
 # Main function of the code
 def main():
 
     name = getName()
     uname = buildUser(name[0], name[1])
-    passTest()
+    passMake()
     
     print("Account configured. Your new email address is",uname + "@marist.edu")
 
