@@ -20,15 +20,15 @@ def calc(listLength, equation = []):
         if((equation[i]=="*") or (equation[i]=="/")):
             if(equation[i]=="*"):
                 product = mult(int(equation[i-2]), int(equation[i+2]))
-                product = str(product)
-                equation.replace(equation[i+2], product)
+                newProduct = str(product)
+                equation.replace(equation[i+2], newProduct)
                 equation.replace(equation[i-2], "")
                 equation.replace(equation[i], "")
                 print(equation)
             elif(equation[i]=="/"):
                 quotient = div(int(equation[i-2]), int(equation[i+2]))
-                quotient = str(quotient)
-                equation.replace(equation[i+2], quotient)
+                newQuotient = str(quotient)
+                equation.replace(equation[i+2], newQuotient)
                 equation.replace(equation[i-2], "")
                 equation.replace(equation[i], "")
                 print(equation)
@@ -36,15 +36,15 @@ def calc(listLength, equation = []):
         elif((equation[i]=="+") or (equation[i]=="-")):
             if(equation[i]=="+"):
                 numSum = add(int(equation[i-2]), int(equation[i+2]))
-                numSum = str(numSum)
-                equation.replace(equation[i+2], numSum)
+                newNumSum = str(numSum)
+                equation.replace(equation[i+2], newNumSum)
                 equation.replace(equation[i-2], "")
                 equation.replace(equation[i], "")
                 print(equation)
             elif(equation[i]=="-"):
                 difference = sub(int(equation[i-2]), int(equation[i+2]))
-                difference = str(difference)
-                equation.replace(equation[i+2], difference)
+                newDifference = str(difference)
+                equation.replace(equation[i+2], newDifference)
                 equation.replace(equation[i-2], "")
                 equation.replace(equation[i], "")
                 print(equation)
