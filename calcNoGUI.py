@@ -10,23 +10,32 @@ def main():
 
 # Does main calculations for the calulator
 def calc():
-    for i in range(eqLen):
-        if((i=="*") or (i=="/")):
-            if(i=="*"):
-                product = mult(equation[i-1], equation[i+1])
-                equation[i] = product
-                equation.remove(i-1)
-                equation.remove(i+1)
-            elif(i=="/"):
-                quotient = div(equation[i-1], equation[i+1])
-                equation[i] = quotient
-                equation.remove(i-1)
-                equation.remove(i+1)
-        elif((i=="+") or (i=="-")):
-            if(i=="+"):
-                
-                
-        
+        # For loop to loop through given equation
+        for i in range(eqLen):
+            # Beginning PEMDAS by checking for * or /
+            if((i=="*") or (i=="/")):
+                if(i=="*"):
+                    product = mult(equation[i-1], equation[i+1])
+                    equation[i] = product
+                    equation.remove(i-1)
+                    equation.remove(i+1)
+                elif(i=="/"):
+                    quotient = div(equation[i-1], equation[i+1])
+                    equation[i] = quotient
+                    equation.remove(i-1)
+                    equation.remove(i+1)
+            # Next step in PEMDAS by checking for + or -
+            elif((i=="+") or (i=="-")):
+                if(i=="+"):
+                    numSum = add(equation[i-1], equation[i+1])
+                    equation[i] = numSum
+                    equation.remove(i-1)
+                    equation.remove(i+1)
+                if(i=="-"):
+                    difference = sub(equation[i-1], equation[i+1])
+                    equation[i] = difference
+                    equation.remove(i-1)
+                    equation.remove(i+1)
 
 # Multiplication Function
 def mult(num1, num2):
