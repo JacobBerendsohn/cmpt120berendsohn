@@ -7,9 +7,13 @@ def main():
     equation = (input("Please enter a basic calculation with no spaces: "))
     # Gets list length for the for loop
     eqLen = len(equation)
+    final = calc():
+    print("Your answer is:",final)
 
 # Does main calculations for the calulator
 def calc():
+    # If statement to check if problem has been solved
+    if(eqLen!=1):
         # For loop to loop through given equation
         for i in range(eqLen):
             # Beginning PEMDAS by checking for * or /
@@ -36,6 +40,8 @@ def calc():
                     equation[i] = difference
                     equation.remove(i-1)
                     equation.remove(i+1)
+    else:
+        return finalAnswer
 
 # Multiplication Function
 def mult(num1, num2):
