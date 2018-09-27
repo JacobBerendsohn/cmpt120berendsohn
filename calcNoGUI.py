@@ -11,11 +11,19 @@ def main():
 # Does main calculations for the calulator
 def calc():
     for i in range(eqLen):
-        if(i=="*"):
-            product = mult(equation[i-1], equation[i+1])
-            equation[i] = product
-            equation.remove(i-1)
-            equation.remove(i+1)
+        if(i=="*" || i=="/"):
+            if(i=="*"):
+                product = mult(equation[i-1], equation[i+1])
+                equation[i] = product
+                equation.remove(i-1)
+                equation.remove(i+1)
+            elif(i=="/"):
+                quotient = div(equation[i-1], equation[i+1])
+                equation[i] = quotient
+                equation.remove(i-1)
+                equation.remove(i+1)
+                
+        
 
 # Multiplication Function
 def mult(num1, num2):
