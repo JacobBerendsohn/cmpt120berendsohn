@@ -11,7 +11,7 @@ def main():
 # Does main calculations for the calulator
 def calc():
     for i in range(eqLen):
-        if(i=="*" || i=="/"):
+        if((i=="*") or (i=="/")):
             if(i=="*"):
                 product = mult(equation[i-1], equation[i+1])
                 equation[i] = product
@@ -22,6 +22,9 @@ def calc():
                 equation[i] = quotient
                 equation.remove(i-1)
                 equation.remove(i+1)
+        elif((i=="+") or (i=="-")):
+            if(i=="+"):
+                
                 
         
 
