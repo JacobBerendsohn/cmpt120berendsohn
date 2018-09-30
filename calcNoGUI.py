@@ -3,10 +3,8 @@
 
 def main():
     # Makes a list to hold the equation
-    equation = []
-    equation = (input("Please enter a basic calculation with spaces between everything: "))
+    equation = (list(input("Please enter a basic calculation with spaces between everything: ")))
     # Gets list length for the for loop
-    equation.split()
     eqLen = len(equation)
     final = calc(eqLen, equation)
     print("Your answer is:",final)
@@ -19,35 +17,39 @@ def calc(listLength, equation = []):
         # Beginning PEMDAS by checking for * or /
         if((equation[i]=="*") or (equation[i]=="/")):
             if(equation[i]=="*"):
-                product = mult(int(equation[i-2]), int(equation[i+2]))
+                product = mult(int(equation[i-1]), int(equation[i+1]))
                 newProduct = str(product)
-                equation.replace(equation[i+2], newProduct)
-                equation.replace(equation[i-2], "")
-                equation.replace(equation[i], "")
-                print(equation)
+                equation1 = equation
+                equation = []
+                equation.append(newProduct)
+                for index in range(len(equation1)):
+                    equation.append(equation1[index])
             elif(equation[i]=="/"):
-                quotient = div(int(equation[i-2]), int(equation[i+2]))
+                quotient = div(int(equation[i-1]), int(equation[i+1]))
                 newQuotient = str(quotient)
-                equation.replace(equation[i+2], newQuotient)
-                equation.replace(equation[i-2], "")
-                equation.replace(equation[i], "")
-                print(equation)
+                equation1 = equation
+                equation = []
+                equation.append(newQuotient)
+                for index in range(len(equation1)):
+                    equation.append(equation1[index])
         # Next step in PEMDAS by checking for + or -
         elif((equation[i]=="+") or (equation[i]=="-")):
             if(equation[i]=="+"):
-                numSum = add(int(equation[i-2]), int(equation[i+2]))
+                numSum = add(int(equation[i-1]), int(equation[i+1]))
                 newNumSum = str(numSum)
-                equation.replace(equation[i+2], newNumSum)
-                equation.replace(equation[i-2], "")
-                equation.replace(equation[i], "")
-                print(equation)
+                equation1 = equation
+                equation = []
+                equation.append(newNumSum)
+                for index in range(len(equation1)):
+                    equation.append(equation1[index])
             elif(equation[i]=="-"):
-                difference = sub(int(equation[i-2]), int(equation[i+2]))
+                difference = sub(int(equation[i-1]), int(equation[i+1]))
                 newDifference = str(difference)
-                equation.replace(equation[i+2], newDifference)
-                equation.replace(equation[i-2], "")
-                equation.replace(equation[i], "")
-                print(equation)
+                equation1 = equation
+                equation = []
+                equation.append(newDifference)
+                for index in range(len(equation1)):
+                    equation.append(equation1[index])
                 
     finalAnswer = equation[eqLen-1]
     return finalAnswer
