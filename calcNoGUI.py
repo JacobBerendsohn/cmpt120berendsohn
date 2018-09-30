@@ -22,16 +22,22 @@ def calc(listLength, equation = []):
                 equation1 = equation
                 equation = []
                 equation.append(newProduct)
-                for index in range(len(equation1)):
-                    equation.append(equation1[index])
+                if(len(equation1) < 3):
+                    for index in range(len(equation1)):
+                        equation.append(equation1[index+2])
+                equation1 = []
+                print(equation)
             elif(equation[i]=="/"):
                 quotient = div(int(equation[i-1]), int(equation[i+1]))
                 newQuotient = str(quotient)
                 equation1 = equation
                 equation = []
                 equation.append(newQuotient)
-                for index in range(len(equation1)):
-                    equation.append(equation1[index])
+                if(len(equation1) < 3):
+                    for index in range(len(equation1)):
+                        equation.append(equation1[index+2])
+                equation1 = []
+                print(equation)
         # Next step in PEMDAS by checking for + or -
         elif((equation[i]=="+") or (equation[i]=="-")):
             if(equation[i]=="+"):
@@ -40,18 +46,24 @@ def calc(listLength, equation = []):
                 equation1 = equation
                 equation = []
                 equation.append(newNumSum)
-                for index in range(len(equation1)):
-                    equation.append(equation1[index])
+                if(len(equation1) < 3):
+                    for index in range(len(equation1)):
+                        equation.append(equation1[index+2])
+                equation1 = []
+                print(equation)
             elif(equation[i]=="-"):
                 difference = sub(int(equation[i-1]), int(equation[i+1]))
                 newDifference = str(difference)
                 equation1 = equation
                 equation = []
                 equation.append(newDifference)
-                for index in range(len(equation1)):
-                    equation.append(equation1[index])
+                if(len(equation1) < 3):
+                    for index in range(len(equation1)):
+                        equation.append(equation1[index+2])
+                equation1 = []
+                print(equation)
                 
-    finalAnswer = equation[eqLen-1]
+    finalAnswer = equation[0]
     return finalAnswer
 
 # Multiplication Function
