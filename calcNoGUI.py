@@ -13,7 +13,7 @@ def main():
 def calc(listLength, equation = []):
     eqLen = listLength
     # For loop to loop through given equation
-    for i in range(eqLen):
+    for i in range(int(eqLen/2)+1):
         # Beginning PEMDAS by checking for * or /
         if((equation[i]=="*") or (equation[i]=="/")):
             if(equation[i]=="*"):
