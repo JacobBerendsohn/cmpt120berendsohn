@@ -9,7 +9,7 @@ def main():
         guess = input("Guess the animal I am thinking of: ")
         if(guess.lower() == "quit"):
             wrong = False
-        elif(guess.lower() == animal):
+        elif(guess.lower() == animal.lower()):
             print("YOU GOT THE RIGHT ANIMAL")
             wrong = False
         else:
