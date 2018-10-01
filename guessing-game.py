@@ -14,6 +14,7 @@ def main():
             wrong = False
         elif(guess.lower() == animal.lower()):
             print("YOU GOT THE RIGHT ANIMAL")
+            like = input("Do you like this animal? (y or n) ")
             wrong = False
         else:
             print("Incorrect try again :(")
