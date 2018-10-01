@@ -10,9 +10,9 @@ def main():
         if(guess.lower() == "quit"):
             wrong = False
         elif(guess.lower() == animal):
+            print("YOU GOT THE RIGHT ANIMAL")
             wrong = False
         else:
             print("Incorrect try again :(")
-    print("YOU GOT THE RIGHT ANIMAL")
 main()
     
