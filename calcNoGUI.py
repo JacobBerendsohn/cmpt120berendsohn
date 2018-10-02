@@ -15,14 +15,20 @@ def concat(oldEq = []):
     finEq = []
     i = 0
     number = ""
+    
     for n in range(len(oldEq)):
+        
+        # Checks for the operators in the equation to know where the numbers are
         if(oldEq[n] == "+" or oldEq[n] == "-" or oldEq[n] == "*" or oldEq[n] == "/"):
+            
             number = oldEq[n-i: n]
             newNumber = "".join(number)
             finEq.append(newNumber)
             finEq.append(oldEq[n])
             i = 0
             number = ""
+            
+        # This elif is for the last item in the list
         elif(len(oldEq) == n+1):
             number = oldEq[n-i: n+1]
             print(number)
@@ -30,8 +36,12 @@ def concat(oldEq = []):
             finEq.append(newNumber)
             i = 0
             number = ""
+
+        # This is the counter to know how many numbers there are before the operator
         else:
             i = i+1
+
+    # Returns final equation
     return finEq
 
 # Does main calculations for the calulator
@@ -39,30 +49,50 @@ def calc(equation = []):
     for num in range(eqLen):
     # For loop to loop through given equation
     while(len(equation) != 1):
+        
         for i in range(1, len(equation)):
+            
             # Beginning PEMDAS by checking for * or /
             if((equation[i]=="*") or (equation[i]=="/")):
+
+                # Multiplication
                 if(equation[i]=="*"):
+                    
                     product = mult(int(equation[i-1]), int(equation[i+1]))
                     del equation[i-1:1+2]
                     equation.insert[i-1, product]
                     print(equation)
+
+                # Division
                 elif(equation[i]=="/"):
-                    quotient = div(int(equation[i-1]), int(equation[i+1]))
                     
+                    quotient = div(int(equation[i-1]), int(equation[i+1]))
+                    del equation[i-1:1+2]
+                    equation.insert[i-1, quotient]
                     print(equation)
+                    
             # Next step in PEMDAS by checking for + or -
             elif((equation[i]=="+") or (equation[i]=="-")):
+
+                # Addition
                 if(equation[i]=="+"):
+                    
                     numSum = add(int(equation[i-1]), int(equation[i+1]))
-                    
+                    del equation[i-1:1+2]
+                    equation.insert[i-1, numSum]
                     print(equation)
+
+                # Subtraction
                 elif(equation[i]=="-"):
-                    difference = sub(int(equation[i-1]), int(equation[i+1]))
                     
+                    difference = sub(int(equation[i-1]), int(equation[i+1]))
+                    del equation[i-1:1+2]
+                    equation.insert[i-1, difference]
                     print(equation)
-                
+        
     finalAnswer = equation[0]
+
+    # Returns final answer
     return finalAnswer
 
 # Multiplication Function
