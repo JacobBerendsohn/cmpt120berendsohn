@@ -7,9 +7,8 @@ def main():
     # Gets list length for the for loop
     equation = concat(eq)
     print(equation)
-    eqLen = len(equation)
-    #final = calc(eqLen, equation)
-    #print("Your answer is:",final)
+    final = calc(equation)
+    print("Your answer is:",final)
 
 # Makes the list hold numbers with more than one digit
 def concat(oldEq = []):
@@ -35,55 +34,55 @@ def concat(oldEq = []):
             i = i+1
     return finEq
 
-### Does main calculations for the calulator
-##def calc(listLength, equation = []):
-##    eqLen = listLength
-##    for num in range(eqLen):
-##    # For loop to loop through given equation
-##    while(len(equation) != 1):
-##        for i in range(int(eqLen/2)):
-##            # Beginning PEMDAS by checking for * or /
-##            if((equation[i]=="*") or (equation[i]=="/")):
-##                if(equation[i]=="*"):
-##                    product = mult(int(equation[i-1]), int(equation[i+1]))
-##                    
-##                    print(equation)
-##                elif(equation[i]=="/"):
-##                    quotient = div(int(equation[i-1]), int(equation[i+1]))
-##                    
-##                    print(equation)
-##            # Next step in PEMDAS by checking for + or -
-##            elif((equation[i]=="+") or (equation[i]=="-")):
-##                if(equation[i]=="+"):
-##                    numSum = add(int(equation[i-1]), int(equation[i+1]))
-##                    
-##                    print(equation)
-##                elif(equation[i]=="-"):
-##                    difference = sub(int(equation[i-1]), int(equation[i+1]))
-##                    
-##                    print(equation)
-##                
-##    finalAnswer = equation[0]
-##    return finalAnswer
-##
-### Multiplication Function
-##def mult(num1, num2):
-##    answer = num1*num2
-##    return answer
-##
-### Division Function
-##def div(num1, num2):
-##    answer = num1/num2
-##    return answer
-##
-### Addition Function
-##def add(num1, num2):
-##    answer = num1+num2
-##    return answer
-##
-### Subtraction Function
-##def sub(num1, num2):
-##    answer = num1-num2
-##    return answer
+# Does main calculations for the calulator
+def calc(equation = []):
+    for num in range(eqLen):
+    # For loop to loop through given equation
+    while(len(equation) != 1):
+        for i in range(1, len(equation)):
+            # Beginning PEMDAS by checking for * or /
+            if((equation[i]=="*") or (equation[i]=="/")):
+                if(equation[i]=="*"):
+                    product = mult(int(equation[i-1]), int(equation[i+1]))
+                    del equation[i-1:1+2]
+                    equation.insert[i-1, product]
+                    print(equation)
+                elif(equation[i]=="/"):
+                    quotient = div(int(equation[i-1]), int(equation[i+1]))
+                    
+                    print(equation)
+            # Next step in PEMDAS by checking for + or -
+            elif((equation[i]=="+") or (equation[i]=="-")):
+                if(equation[i]=="+"):
+                    numSum = add(int(equation[i-1]), int(equation[i+1]))
+                    
+                    print(equation)
+                elif(equation[i]=="-"):
+                    difference = sub(int(equation[i-1]), int(equation[i+1]))
+                    
+                    print(equation)
+                
+    finalAnswer = equation[0]
+    return finalAnswer
+
+# Multiplication Function
+def mult(num1, num2):
+    answer = num1*num2
+    return answer
+
+# Division Function
+def div(num1, num2):
+    answer = num1/num2
+    return answer
+
+# Addition Function
+def add(num1, num2):
+    answer = num1+num2
+    return answer
+
+# Subtraction Function
+def sub(num1, num2):
+    answer = num1-num2
+    return answer
 
 main()
