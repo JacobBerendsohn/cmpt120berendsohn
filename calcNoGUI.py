@@ -1,9 +1,10 @@
 # calcNoGUI.py
-# Creating a calculator without the use of a graphical user interface
+# Creating a calculator without the use of a GUI, can solve with the 4 basic operators, and no parenthesis
 
 def main():
     # Makes a list to hold the equation
     eq = (list(input("Please enter a basic calculation without spaces: ")))
+    
     # Gets list length for the for loop
     equation = concat(eq)
     print(equation)
@@ -18,7 +19,7 @@ def concat(oldEq = []):
     
     for n in range(len(oldEq)):
         
-        # Checks for the operators in the equation to know where the numbers are
+        # Checks for the operators in the equation to know where the numbers are in relation to operators
         if(oldEq[n] == "+" or oldEq[n] == "-" or oldEq[n] == "*" or oldEq[n] == "/"):
             
             number = oldEq[n-i: n]
@@ -40,16 +41,16 @@ def concat(oldEq = []):
         else:
             i = i+1
 
-    # Returns final equation
+    # Returns final concatentated equation to give to calculator function
     return finEq
 
 # Does main calculations for the calulator
 def calc(equation = []):
     
-    # For loop to loop through given equation
+    # For loop to loop through given equation, and to close when one index remains
     while(len(equation) != 1):
 
-        # Making sure pemdas works fror multiple division and multiplication operators
+        # Making sure pemdas works for multiple division and multiplication operators in same equation
         while(("*" in equation) or ("/" in equation)):
             
             for i in range(1, len(equation)):
