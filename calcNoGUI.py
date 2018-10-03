@@ -62,9 +62,7 @@ def calc(equation = []):
                         
                         product = mult(float(equation[i-1]), float(equation[i+1]))
                         product = str(product)
-                        del equation[i-1:i+2]
-                        equation.insert(i-1, product)
-                        print(equation)
+                        equation = ins(product, i, equation)
                         break
 
                     # Division
@@ -72,9 +70,7 @@ def calc(equation = []):
                         
                         quotient = div(float(equation[i-1]), float(equation[i+1]))
                         quotient = str(quotient)
-                        del equation[i-1:i+2]
-                        equation.insert(i-1, quotient)
-                        print(equation)
+                        equation = ins(quotient, i, equation)
                         break
                     break
 
@@ -88,9 +84,7 @@ def calc(equation = []):
                     
                     numSum = add(float(equation[i-1]), float(equation[i+1]))
                     numSum = str(numSum)
-                    del equation[i-1:i+2]
-                    equation.insert(i-1, numSum)
-                    print(equation)
+                    equation = ins(numSum, i, equation)
                     break
 
                 # Subtraction
@@ -98,16 +92,22 @@ def calc(equation = []):
                     
                     difference = sub(float(equation[i-1]), float(equation[i+1]))
                     difference = str(difference)
-                    del equation[i-1:i+2]
-                    equation.insert(i-1, difference)
-                    print(equation)
+                    equation = ins(difference, i, equation)
                     break
+                
                 break
         
     finalAnswer = equation[0]
 
     # Returns final answer
     return finalAnswer
+
+# Completes the insertion of the new term and deletion of the old
+def ins(finalNum, i, equation = []):
+    del equation[i-1:i+2]
+    equation.insert(i-1, finalNum)
+    print(equation)
+    return equation
 
 # Multiplication Function
 def mult(num1, num2):
