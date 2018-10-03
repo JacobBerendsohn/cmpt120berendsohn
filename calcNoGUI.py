@@ -3,7 +3,7 @@
 
 def main():
     # Makes a list to hold the equation
-    eq = (list(input("Please enter a basic calculation with spaces between everything: ")))
+    eq = (list(input("Please enter a basic calculation without spaces: ")))
     # Gets list length for the for loop
     equation = concat(eq)
     print(equation)
@@ -31,7 +31,6 @@ def concat(oldEq = []):
         # This elif is for the last item in the list
         elif(len(oldEq) == n+1):
             number = oldEq[n-i: n+1]
-            print(number)
             newNumber = "".join(number)
             finEq.append(newNumber)
             i = 0
@@ -46,7 +45,7 @@ def concat(oldEq = []):
 
 # Does main calculations for the calulator
 def calc(equation = []):
-    for num in range(eqLen):
+    
     # For loop to loop through given equation
     while(len(equation) != 1):
         
@@ -58,37 +57,49 @@ def calc(equation = []):
                 # Multiplication
                 if(equation[i]=="*"):
                     
-                    product = mult(int(equation[i-1]), int(equation[i+1]))
-                    del equation[i-1:1+2]
-                    equation.insert[i-1, product]
+                    product = mult(float(equation[i-1]), float(equation[i+1]))
+                    product = str(product)
+                    del equation[i-1:i+2]
+                    equation.insert(i-1, product)
                     print(equation)
+                    break
 
                 # Division
                 elif(equation[i]=="/"):
                     
-                    quotient = div(int(equation[i-1]), int(equation[i+1]))
-                    del equation[i-1:1+2]
-                    equation.insert[i-1, quotient]
+                    quotient = div(float(equation[i-1]), float(equation[i+1]))
+                    quotient = str(quotient)
+                    del equation[i-1:i+2]
+                    equation.insert(i-1, quotient)
                     print(equation)
-                    
-            # Next step in PEMDAS by checking for + or -
-            elif((equation[i]=="+") or (equation[i]=="-")):
+                    break
+                break
+
+        # Next step in PEMDAS by checking for + or -
+        for i in range(1, len(equation)):
+            
+            if((equation[i]=="+") or (equation[i]=="-")):
 
                 # Addition
                 if(equation[i]=="+"):
                     
-                    numSum = add(int(equation[i-1]), int(equation[i+1]))
-                    del equation[i-1:1+2]
-                    equation.insert[i-1, numSum]
+                    numSum = add(float(equation[i-1]), float(equation[i+1]))
+                    numSum = str(numSum)
+                    del equation[i-1:i+2]
+                    equation.insert(i-1, numSum)
                     print(equation)
+                    break
 
                 # Subtraction
                 elif(equation[i]=="-"):
                     
-                    difference = sub(int(equation[i-1]), int(equation[i+1]))
-                    del equation[i-1:1+2]
-                    equation.insert[i-1, difference]
+                    difference = sub(float(equation[i-1]), float(equation[i+1]))
+                    difference = str(difference)
+                    del equation[i-1:i+2]
+                    equation.insert(i-1, difference)
                     print(equation)
+                    break
+                break
         
     finalAnswer = equation[0]
 
