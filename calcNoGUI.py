@@ -48,32 +48,35 @@ def calc(equation = []):
     
     # For loop to loop through given equation
     while(len(equation) != 1):
-        
-        for i in range(1, len(equation)):
+
+        # Making sure pemdas works fror multiple division and multiplication operators
+        while(("*" in equation) or ("/" in equation)):
             
-            # Beginning PEMDAS by checking for * or /
-            if((equation[i]=="*") or (equation[i]=="/")):
+            for i in range(1, len(equation)):
+                
+                # Beginning PEMDAS by checking for * or /
+                if((equation[i]=="*") or (equation[i]=="/")):
 
-                # Multiplication
-                if(equation[i]=="*"):
-                    
-                    product = mult(float(equation[i-1]), float(equation[i+1]))
-                    product = str(product)
-                    del equation[i-1:i+2]
-                    equation.insert(i-1, product)
-                    print(equation)
-                    break
+                    # Multiplication
+                    if(equation[i]=="*"):
+                        
+                        product = mult(float(equation[i-1]), float(equation[i+1]))
+                        product = str(product)
+                        del equation[i-1:i+2]
+                        equation.insert(i-1, product)
+                        print(equation)
+                        break
 
-                # Division
-                elif(equation[i]=="/"):
-                    
-                    quotient = div(float(equation[i-1]), float(equation[i+1]))
-                    quotient = str(quotient)
-                    del equation[i-1:i+2]
-                    equation.insert(i-1, quotient)
-                    print(equation)
+                    # Division
+                    elif(equation[i]=="/"):
+                        
+                        quotient = div(float(equation[i-1]), float(equation[i+1]))
+                        quotient = str(quotient)
+                        del equation[i-1:i+2]
+                        equation.insert(i-1, quotient)
+                        print(equation)
+                        break
                     break
-                break
 
         # Next step in PEMDAS by checking for + or -
         for i in range(1, len(equation)):
