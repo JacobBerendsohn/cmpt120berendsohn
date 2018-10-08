@@ -5,7 +5,7 @@ def main():
     # Makes a list to hold the equation
     eq = (list(input("Please enter a basic calculation without spaces: ")))
     
-    # Gets list length for the for loop
+    # Fixed the input in the list to have numbers with more than one digit
     equation = concat(eq)
     print(equation)
     final = calc(equation)
