@@ -2,9 +2,11 @@
 # Implements a GUI and display for calc_functions.
 
 from graphics import *
+import calc_functions
 
 def main():
-    drawCalc()
+    win = drawCalc()
+    takeInput(win)
 
 
 def drawCalc():
@@ -36,7 +38,7 @@ def drawCalc():
     Rectangle(Point(7,12),Point(9,10)).draw(win)
     Text(Point(8,11),"6").draw(win)
     Rectangle(Point(10,12),Point(12,10)).draw(win)
-    Text(Point(11,11),"x").draw(win)
+    Text(Point(11,11),"*").draw(win)
 
     # Third Row
     Rectangle(Point(1,9),Point(3,7)).draw(win)
@@ -60,10 +62,80 @@ def drawCalc():
 
     # Bottom Row
     Rectangle(Point(10,3),Point(12,1)).draw(win)
-    Text(Point(5,2),"C").draw(win)
-    Rectangle(Point(1,3),Point(9,1)).draw(win)
     Text(Point(11,2),"=").draw(win)
+    Rectangle(Point(1,3),Point(3,1)).draw(win)
+    Text(Point(2,2),"C").draw(win)
 
+    return win
+    
+
+def takeInput(win):
+    clicked = ""
+    i = ""
+    equation = []
+    printedEquation = Text(Point(0,0),"")
+    
+    while(i != "="):
+        equation.append(clicked)
+        printed = "".join(equation)
+        print(printed)
+        printedEquation.undraw()
+        printedEquation = Text(Point(6.5,17), printed)
+        printedEquation.draw(win)
+        p = win.getMouse()
+        x = p.getX()
+        y = p.getY()
+        if(y <= 15 and y >= 13):
+            if(x <= 3 and x >= 1):
+                clicked = "7"
+            elif(x <= 6 and x >= 4):
+                clicked = "8"
+            elif(x <= 9 and x >= 7):
+                clicked = "9"
+            elif(x <= 12 and x >= 10):
+                clicked = "/"
+        elif(y <= 12 and y >= 10):
+            if(x <= 3 and x >= 1):
+                clicked = "4"
+            elif(x <= 6 and x >= 4):
+                clicked = "5"
+            elif(x <= 9 and x >= 7):
+                clicked = "6"
+            elif(x <= 12 and x >= 10):
+                clicked = "*"
+        elif(y <= 9 and y >= 7):
+            if(x <= 3 and x >= 1):
+                clicked = "1"
+            elif(x <= 6 and x >= 4):
+                clicked = "2"
+            elif(x <= 9 and x >= 7):
+                clicked = "3"
+            elif(x <= 12 and x >= 10):
+                clicked = "+"
+        elif(y <= 6 and y >= 4):
+            if(x <= 3 and x >= 1):
+                clicked = ""
+                # Make it negative (Wont work)
+            elif(x <= 6 and x >= 4):
+                clicked = "0"
+            elif(x <= 9 and x >= 7):
+                clicked = "."
+            elif(x <= 12 and x >= 10):
+                clicked = "-"
+        elif(y <= 3 and y >= 1):
+            if(x <= 12 and x >= 10):
+                answer = calc_functions.main(printed)
+                printedEquation.undraw()
+                finalAnswer = Text(Point(6.5,17), answer)
+                finalAnswer.draw(win)
+                i = "="
+                # Enter goes here
+            elif(x <= 3 and x >= 1):
+                clicked = ""
+                printed = ""
+                equation = []
+   
+    
 main()
 
 
