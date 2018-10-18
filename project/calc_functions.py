@@ -1,16 +1,16 @@
 # calc_functions.py
 # Creating a calculator without the use of a GUI, can solve with the 4 basic operators, and no parenthesis
 
-def main():
+def main(eq):
+
     # Makes a list to hold the equation
-    eq = (list(input("Please enter a basic calculation without spaces: ")))
-    
+    new = (list(eq))
     # Fixed the input in the list to have numbers with more than one digit
-    equation = concat(eq)
+    equation = concat(new)
     print(equation)
     final = calc(equation)
-    print("Your answer is:",final)
 
+    return final
 # Makes the list hold numbers with more than one digit
 def concat(oldEq = []):
     finEq = []
@@ -129,5 +129,3 @@ def add(num1, num2):
 def sub(num1, num2):
     answer = num1-num2
     return answer
-
-main()
