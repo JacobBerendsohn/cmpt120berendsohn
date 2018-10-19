@@ -77,17 +77,24 @@ def takeInput(win):
     equation = []
     printedEquation = Text(Point(0,0),"")
     printedEquation.undraw()
-    
+
+    # Looping to get the equation until equals is pressed
     while(i != "="):
+        # Adding clicked character to equation
         equation.append(clicked)
         printed = "".join(equation)
+        # Printing equation in shell for confirmation
         print(printed)
+        # Removing the last part of equation so there is no overlap
         printedEquation.undraw()
         printedEquation = Text(Point(6.5,17), printed)
+        # Drawing equation on screen
         printedEquation.draw(win)
+        # Getting where mouse was clicked
         p = win.getMouse()
         x = p.getX()
         y = p.getY()
+        # If statement to confirm which character was chosen
         if(y <= 15 and y >= 13):
             if(x <= 3 and x >= 1):
                 clicked = "7"
@@ -126,22 +133,28 @@ def takeInput(win):
             elif(x <= 12 and x >= 10):
                 clicked = "-"
         elif(y <= 3 and y >= 1):
+            # Enter
             if(x <= 12 and x >= 10):
+                # Calling calc_functions to get the correct answer
                 answer = calc_functions.main(printed)
                 printedEquation.undraw()
                 finalAnswer = Text(Point(6.5,17), answer)
                 finalAnswer.draw(win)
+                # Check to exit the loop
                 i = "="
-                # Enter goes here
+            # Clear
             elif(x <= 3 and x >= 1):
                 clicked = ""
                 printed = ""
                 equation = []
+            # Quit
             elif(x <= 6 and x >= 4):
                 win.close()
+    # Getting the mouse location after the loop is done iterating
     p = win.getMouse()
     x = p.getX()
     y = p.getY()
+    # Clear after = has been pressed
     if((y <= 3 and y >= 1) and (x <= 3 and x >= 1)):
         answer = calc_functions.main(printed)
         finalAnswer.undraw()
