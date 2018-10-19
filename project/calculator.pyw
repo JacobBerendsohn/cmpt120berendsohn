@@ -65,6 +65,8 @@ def drawCalc():
     Text(Point(11,2),"=").draw(win)
     Rectangle(Point(1,3),Point(3,1)).draw(win)
     Text(Point(2,2),"C").draw(win)
+    Rectangle(Point(4,3),Point(6,1)).draw(win)
+    Text(Point(5,2),"Quit").draw(win)
 
     return win
     
@@ -74,6 +76,7 @@ def takeInput(win):
     i = ""
     equation = []
     printedEquation = Text(Point(0,0),"")
+    printedEquation.undraw()
     
     while(i != "="):
         equation.append(clicked)
@@ -134,8 +137,15 @@ def takeInput(win):
                 clicked = ""
                 printed = ""
                 equation = []
-   
-    
+            elif(x <= 6 and x >= 4):
+                win.close()
+    p = win.getMouse()
+    x = p.getX()
+    y = p.getY()
+    if((y <= 3 and y >= 1) and (x <= 3 and x >= 1)):
+        answer = calc_functions.main(printed)
+        finalAnswer.undraw()
+        takeInput(win)
 main()
 
 
