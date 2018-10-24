@@ -68,6 +68,41 @@ def hasBlanks(board):
     else:
         return True
 
+def vicCheck(board):
+    vicAns = 0
+    for rows in range(3):
+        for cols in range(3):
+            if(board[rows][0] == 1 and board[rows][1] == 1 and board[rows][2] == 1):
+                vicAns = 1
+                return vicAns
+            elif(board[rows][0] == 2 and board[rows][1] == 2 and board[rows][2] == 2):
+                vicAns = 2
+                return vicAns
+            elif(board[0][cols] == 1 and board[1][cols] == 1 and board[2][cols] == 1):
+                vicAns = 1
+                return vicAns
+            elif(board[0][cols] == 2 and board[1][cols] == 2 and board[2][cols] == 2):
+                vicAns = 2
+                return vicAns
+    if(board[0][0] == 1 and board[1][1] == 1 and board[2][2] == 1):
+        vicAns = 1
+        return vicAns
+    elif(board[0][0] == 2 and board[1][1] == 2 and board[2][2] == 2):
+        vicAns = 2
+        return vicAns
+    elif(board[0][2] == 1 and board[1][1] == 1 and board[2][0] == 1):
+        vicAns = 1
+        return vicAns
+    elif(board[0][2] == 2 and board[1][1] == 2 and board[2][0] == 2):
+        vicAns = 2
+        return vicAns
+    else:
+        return vicAns
+
+def playAgain():
+    main()
+            
+
 def main():
     board = [[0,0,0],[0,0,0],[0,0,0]]
     # Starting Player
@@ -77,5 +112,24 @@ def main():
         row,col = getPlayerMove()
         markBoard(board,row,col,player)
         # switch player for next turn
-        player = player % 2 + 1 
+        player = player % 2 + 1
+        vicAns = vicCheck(board)
+        if(vicAns == 1):
+            print("Congratulations Player 1 you have won!")
+            playAgn = input("Would you like to play again? (y / n):")
+            playAgn = playAgn.lower()
+            if(playAgn == "y"):
+                playAgain()
+            else:
+                quit()
+                False
+        elif(vicAns == 2):
+            print("Congratulations Player 2 you have won!")
+            playAgn = input("Would you like to play again? (y / n):")
+            playAgn = playAgn.lower()
+            if(playAgn == "y"):
+                playAgain()
+            else:
+                quit()
+                False
     printBoard(board)
