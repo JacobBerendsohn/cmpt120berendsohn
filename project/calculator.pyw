@@ -159,6 +159,9 @@ def takeInput(win):
         answer = calc_functions.main(printed)
         finalAnswer.undraw()
         takeInput(win)
+    # Quit after = has been pressed
+    if((y <= 3 and y >= 1) and (x <= 6 and x >= 4)):
+        win.close()
 main()
 
 
