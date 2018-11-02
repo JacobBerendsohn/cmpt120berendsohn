@@ -19,64 +19,23 @@ def drawCalc():
     # Drawing Display on screen
     Rectangle(Point(1,18),Point(12,16)).draw(win)
 
-    # Drawing Buttons on Calculator with numbers
-    # Top Row
-    Rectangle(Point(1,15),Point(3,13)).draw(win)
-    Text(Point(2,14),"M+").draw(win)
-    Rectangle(Point(4,15),Point(6,13)).draw(win)
-    Text(Point(5,14),"M-").draw(win)
-    Rectangle(Point(7,15),Point(9,13)).draw(win)
-    Text(Point(8,14),"MR").draw(win)
-    Rectangle(Point(10,15),Point(12,13)).draw(win)
-    Text(Point(11,14),"MC").draw(win)
+    # Drawing Rectangles
+    for col in range(-2, 14, 3):
+        for row in range(3, 13, 3):
+            Rectangle(Point(row-2,col+2),Point(row,col)).draw(win)
 
-    # Second
-    Rectangle(Point(1,12),Point(3,10)).draw(win)
-    Text(Point(2,11),"7").draw(win)
-    Rectangle(Point(4,12),Point(6,10)).draw(win)
-    Text(Point(5,11),"8").draw(win)
-    Rectangle(Point(7,12),Point(9,10)).draw(win)
-    Text(Point(8,11),"9").draw(win)
-    Rectangle(Point(10,12),Point(12,10)).draw(win)
-    Text(Point(11,11),"/").draw(win)
+    # List for buttons
+    but = ["C","Quit","","=","(-)","0",".","-","1","2","3","+",
+           "4","5","6","*","7","8","9","/","M+","M-","MR","MC"]
+    
+    # Iteration variable for buttons
+    i = 0
 
-    # Third Row
-    Rectangle(Point(1,9),Point(3,7)).draw(win)
-    Text(Point(2,8),"4").draw(win)
-    Rectangle(Point(4,9),Point(6,7)).draw(win)
-    Text(Point(5,8),"5").draw(win)
-    Rectangle(Point(7,9),Point(9,7)).draw(win)
-    Text(Point(8,8),"6").draw(win)
-    Rectangle(Point(10,9),Point(12,7)).draw(win)
-    Text(Point(11,8),"*").draw(win)
-
-    # Fourth Row
-    Rectangle(Point(1,6),Point(3,4)).draw(win)
-    Text(Point(2,5),"1").draw(win)
-    Rectangle(Point(4,6),Point(6,4)).draw(win)
-    Text(Point(5,5),"2").draw(win)
-    Rectangle(Point(7,6),Point(9,4)).draw(win)
-    Text(Point(8,5),"3").draw(win)
-    Rectangle(Point(10,6),Point(12,4)).draw(win)
-    Text(Point(11,5),"+").draw(win)
-
-    # Fifth Row
-    Rectangle(Point(1,3),Point(3,1)).draw(win)
-    Text(Point(2,2),"(-)").draw(win)
-    Rectangle(Point(4,3),Point(6,1)).draw(win)
-    Text(Point(5,2),"0").draw(win)
-    Rectangle(Point(7,3),Point(9,1)).draw(win)
-    Text(Point(8,2),".").draw(win)
-    Rectangle(Point(10,3),Point(12,1)).draw(win)
-    Text(Point(11,2),"-").draw(win)
-
-    # Bottom Row
-    Rectangle(Point(10,0),Point(12,-2)).draw(win)
-    Text(Point(11,-1),"=").draw(win)
-    Rectangle(Point(1,0),Point(3,-2)).draw(win)
-    Text(Point(2,-1),"C").draw(win)
-    Rectangle(Point(4,0),Point(6,-2)).draw(win)
-    Text(Point(5,-1),"Quit").draw(win)
+    # Drawing buttons in correct rects in calculator GUI
+    for col in range(-1, 15, 3):
+        for row in range(2, 12, 3):
+            Text(Point(row, col),but[i]).draw(win)
+            i = i+1
     
     return win
     
@@ -93,20 +52,26 @@ def takeInput(win):
 
     # Looping to get the equation until equals is pressed
     while(i != "="):
+        
         # Adding clicked character to equation
         equation.append(clicked)
         printed = "".join(equation)
+        
         # Printing equation in shell for confirmation
         print(printed)
+        
         # Removing the last part of equation so there is no overlap
         printedEquation.undraw()
         printedEquation = Text(Point(6.5,17), printed)
+        
         # Drawing equation on screen
         printedEquation.draw(win)
+        
         # Getting where mouse was clicked
         p = win.getMouse()
         x = p.getX()
         y = p.getY()
+        
         # If statement to confirm which character was chosen
         # Memory functions
         if(y <= 15 and y >= 13):
@@ -188,6 +153,7 @@ def takeInput(win):
     p = win.getMouse()
     x = p.getX()
     y = p.getY()
+    
     # Clear after = has been pressed
     if((y <= 0 and y >= -2) and (x <= 3 and x >= 1)):
         answer = calc_functions.main(printed)
